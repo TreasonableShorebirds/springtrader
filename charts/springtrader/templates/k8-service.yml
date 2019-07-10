@@ -18,4 +18,4 @@ spec:
     port: 1528
     protocol: TCP
     targetPort: 1528
-  type: LoadBalancer
+  type: ClusterIP

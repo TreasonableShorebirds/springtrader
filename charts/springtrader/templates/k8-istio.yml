@@ -1,8 +1,8 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: {{ .Chart.name }}-gateway
-  namespace: {{ .Values.istio.namespace }}
+  name: "{{ .Chart.name }}-gateway"
+  namespace: "{{ .Values.istio.namespace }}"
 spec:
   selector:
     istio: ingressgateway
@@ -30,13 +30,13 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: {{ .Chart.name }}
-  namespace: {{ .Values.istio.namespace }}
+  name: "{{ .Chart.name }}"
+  namespace: "{{ .Values.istio.namespace }}"
 spec:
   hosts:
   - "{{ .Chart.name }}.{{ .Values.istio.domain }}"
   gateways:
-  - {{ .Chart.name }}-gateway
+  - "{{ .Chart.name }}-gateway"
   http:
   - route:
     - destination:

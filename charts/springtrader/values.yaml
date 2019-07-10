@@ -4,12 +4,14 @@
 
 replicaCount: 1
 
-image: springtrader:latest 
-
+image: springtrader:latest
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+istio:
+  domain: local
+  namespace: default
 
 service:
   type: ClusterIP

@@ -2,10 +2,10 @@ apiVersion: skaffold/v1alpha2
 kind: Config
 build:
   artifacts:
-  - imageName: springtrader 
+  - imageName: springtrader
     workspace: .
 
-  - imageName: sqlfdb 
+  - imageName: sqlfdb
     workspace: ./sqlfdb
 
   local: {}
@@ -13,8 +13,11 @@ build:
 deploy:
   helm:
     releases:
-      - name: springtrader 
+      - name: springtrader
         chartPath: ./charts/springtrader
         values:
-          image: springtrader 
-          sqlfdb: sqlfdb 
+          image: springtrader
+          sqlfdb: sqlfdb
+        setValueTemplates:
+          istio.domain: "{{if .INGRESS_DOMAIN}}{{.INGRESS_DOMAIN}}{{else}}default{{end}}"
+          istio.namespace: "{{if .TILLER_NAMESPACE}}{{.TILLER_NAMESPACE}}{{else}}default{{end}}"

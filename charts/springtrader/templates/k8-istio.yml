@@ -1,14 +1,14 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: "{{ .Chart.name }}-gateway"
+  name: "{{ .Chart.Name }}-gateway"
   namespace: "{{ .Values.istio.namespace }}"
 spec:
   selector:
     istio: ingressgateway
   servers:
   - hosts:
-    - "{{ .Chart.name }}.{{ .Values.istio.domain }}"
+    - "{{ .Chart.Name }}.{{ .Values.istio.domain }}"
     port:
       name: http
       number: 80
@@ -16,7 +16,7 @@ spec:
     tls:
       httpsRedirect: true
   - hosts:
-    - "{{ .Chart.name }}.{{ .Values.istio.domain }}"
+    - "{{ .Chart.Name }}.{{ .Values.istio.domain }}"
     port:
       name: https-default
       number: 443
@@ -30,13 +30,13 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: "{{ .Chart.name }}"
+  name: "{{ .Chart.Name }}"
   namespace: "{{ .Values.istio.namespace }}"
 spec:
   hosts:
-  - "{{ .Chart.name }}.{{ .Values.istio.domain }}"
+  - "{{ .Chart.Name }}.{{ .Values.istio.domain }}"
   gateways:
-  - "{{ .Chart.name }}-gateway"
+  - "{{ .Chart.Name }}-gateway"
   http:
   - route:
     - destination:

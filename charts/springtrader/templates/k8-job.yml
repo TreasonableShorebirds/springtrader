@@ -4,9 +4,9 @@ metadata:
   name: sqlcheck
 spec:
   template:
-    metadata:
-       annotations:
-         sidecar.istio.io/inject: "false"
+   metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
    spec:
       initContainers:
       - name: init-sqlcheck

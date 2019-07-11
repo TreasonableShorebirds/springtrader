@@ -21,4 +21,4 @@ spec:
         env:
         - name: GROOVY_HOME
           value: '/usr/bin'
-      restartPolicy: Always
+      restartPolicy: OnFailure
